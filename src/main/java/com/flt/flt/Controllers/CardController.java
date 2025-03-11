@@ -20,6 +20,11 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
+    @GetMapping("/test")
+    public ResponseEntity<?> testing() {
+        return new ResponseEntity<>("This is testing" , HttpStatus.OK);
+    }
+
     @GetMapping("/card")
     public ResponseEntity<?> getCardById(@RequestParam(value="cardNumber", defaultValue = "1") long cardOrder) {
         Optional<QuizCard> card = cardService.findCardByCardOrder(cardOrder);
